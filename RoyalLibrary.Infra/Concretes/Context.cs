@@ -13,7 +13,7 @@ public class Context(DbContextOptions<Context> options) : DbContext(options), IR
         List<ValidationResult> validationResults = new List<ValidationResult>();
         foreach (var entity in entities)
         {
-            var validationContext = new ValidationContext(entity);
+            ValidationContext validationContext = new ValidationContext(entity);
             Validator.ValidateObject(entity, validationContext, true);
         }
     }
@@ -28,11 +28,5 @@ public class Context(DbContextOptions<Context> options) : DbContext(options), IR
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new BookMapping());
-    }
-
-    public override int SaveChanges()
-    {
-        ValidateEntities();
-        return base.SaveChanges();
     }
 }
