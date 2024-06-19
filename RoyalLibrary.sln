@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.API", "RoyalLibrary\RoyalLibrary.API.csproj", "{48D258BC-8C05-4EE6-8FDE-6989C55C025A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.API", "src\RoyalLibrary.API\RoyalLibrary.API.csproj", "{48D258BC-8C05-4EE6-8FDE-6989C55C025A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Infra", "RoyalLibrary.Infra\RoyalLibrary.Infra.csproj", "{D5E2ED8D-AAD7-4BAF-AA42-F4A1618CC735}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Infra", "src\RoyalLibrary.Infra\RoyalLibrary.Infra.csproj", "{D5E2ED8D-AAD7-4BAF-AA42-F4A1618CC735}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Models", "RoyalLibrary.Models\RoyalLibrary.Models.csproj", "{BCF3242C-D142-469B-A9EF-42B43B74B82E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Models", "src\RoyalLibrary.Models\RoyalLibrary.Models.csproj", "{BCF3242C-D142-469B-A9EF-42B43B74B82E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Models.Mapping", "RoyalLibrary.Models.Mapping\RoyalLibrary.Models.Mapping.csproj", "{01171465-2F13-448F-8940-61052880FA7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Models.Mapping", "src\RoyalLibrary.Models.Mapping\RoyalLibrary.Models.Mapping.csproj", "{01171465-2F13-448F-8940-61052880FA7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Repositories", "RoyalLibrary.Repositories\RoyalLibrary.Repositories.csproj", "{2F10F18F-CA9E-44FC-9009-C3E54D515F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Repositories", "src\RoyalLibrary.Repositories\RoyalLibrary.Repositories.csproj", "{2F10F18F-CA9E-44FC-9009-C3E54D515F7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Services", "RoyalLibrary.Services\RoyalLibrary.Services.csproj", "{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Services", "src\RoyalLibrary.Services\RoyalLibrary.Services.csproj", "{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - API", "1 - API", "{ABF878B6-DF83-47B9-8CB6-09F821176952}"
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Database", "4 - Database", "{5D0296B8-C708-44D2-807D-132882EBDE1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - CrossCutting", "5 - CrossCutting", "{E5485829-CF50-42B2-A22A-D14C37CFD9E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{1302F2FB-F1C2-484C-9A19-8BD744B8A93C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalLibrary.Tests", "src\RoyalLibrary.Tests\RoyalLibrary.Tests.csproj", "{EFF09EE9-DD3C-49D0-AC00-0AF88916C619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF09EE9-DD3C-49D0-AC00-0AF88916C619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF09EE9-DD3C-49D0-AC00-0AF88916C619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF09EE9-DD3C-49D0-AC00-0AF88916C619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF09EE9-DD3C-49D0-AC00-0AF88916C619}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{01171465-2F13-448F-8940-61052880FA7F} = {B422FAE5-C856-4D80-BF71-9AB3F318287B}
 		{2F10F18F-CA9E-44FC-9009-C3E54D515F7B} = {5D0296B8-C708-44D2-807D-132882EBDE1B}
 		{BDDDBA03-B4C7-4D1C-9D5D-A38775C3F396} = {D237994A-6CB7-403F-8088-190223380432}
+		{EFF09EE9-DD3C-49D0-AC00-0AF88916C619} = {1302F2FB-F1C2-484C-9A19-8BD744B8A93C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EC31EFF-5DE2-4929-A865-58C514D50564}

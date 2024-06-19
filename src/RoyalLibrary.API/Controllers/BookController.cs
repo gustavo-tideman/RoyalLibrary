@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RoyalLibrary.API.ViewModels.Book;
 using RoyalLibrary.Models;
 using RoyalLibrary.Models.Handler;
 using RoyalLibrary.Services.Interfaces;
@@ -34,7 +35,7 @@ public class BookController : ControllerBase
     [HttpGet("search")]
     [ProducesResponseType(typeof(List<Book>), 200)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult> Search(string searchType, string searchTerm)
+    public async Task<ActionResult> Search(SearchRequest model)
     {
         List<Book> data = await _bookService.List();
 
@@ -46,15 +47,15 @@ public class BookController : ControllerBase
         Dictionary<string, Func<Book, bool>> searchPredicates = new Dictionary<string, Func<Book, bool>>
         {
             ["author"] = b =>
-                b.first_name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) == true
-                || b.last_name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) == true,
+                b.first_name?.Contains(model.searchTerm, StringComparison.OrdinalIgnoreCase) == true
+                || b.last_name?.Contains(model.searchTerm, StringComparison.OrdinalIgnoreCase) == true,
 
-            ["isbn"] = b => b.isbn?.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase) == true,
+            ["isbn"] = b => b.isbn?.StartsWith(model.searchTerm, StringComparison.OrdinalIgnoreCase) == true,
 
-            ["title"] = b => b.title?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) == true
+            ["title"] = b => b.title?.Contains(model.searchTerm, StringComparison.OrdinalIgnoreCase) == true
         };
 
-        if (searchPredicates.TryGetValue(searchType, out Func<Book, bool>? predicate))
+        if (searchPredicates.TryGetValue(model.searchType, out Func<Book, bool>? predicate))
         {
             data = data.Where(predicate).ToList();
         }

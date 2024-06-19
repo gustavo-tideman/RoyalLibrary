@@ -4,9 +4,22 @@ As part of a software engineering challenge, I developed a project featuring two
 
  - .NET 8
  - SQL Server
+ - Docker
  - Entity Framework Core
+ - xUnit
+ - Moq
 
-I was instructed to only do the .NET project.
+# Run the API using Docker
+
+Run the command below in the same directory as the docker-compose.yml file.
+    
+This will automatically deploy a SQL Server image, create the database, tables and insert some rows for testing.
+
+    docker-compose up --build
+
+Wait about 3 minutes and then open the link in the browser:
+
+    http://localhost:8669/index.html
 
 # Database
 
@@ -38,8 +51,3 @@ The SQL file is inside the project. Here is the source code you need to run to c
     
     INSERT INTO [dbo].[books] ([title],[first_name],[last_name],[total_copies],[copies_in_use],[type],[isbn],[category]) VALUES ('Clean Code','Robert','Martin','50','30','Printed','676899','Book')
     GO
-
-
-# About this project
-
-It was completed on short notice to demonstrate my software engineering skills. I would be delighted to explain the approach I took, discuss various considerations, and suggest possible improvements. Thank you.

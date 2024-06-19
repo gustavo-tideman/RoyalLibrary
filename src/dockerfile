@@ -1,0 +1,33 @@
+# Etapa base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+EXPOSE 80
+EXPOSE 443
+
+# Etapa de build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["RoyalLibrary.API/RoyalLibrary.API.csproj", "RoyalLibrary.API/"]
+COPY ["RoyalLibrary.Models/RoyalLibrary.Models.csproj", "RoyalLibrary.Models/"]
+COPY ["RoyalLibrary.Services/RoyalLibrary.Services.csproj", "RoyalLibrary.Services/"]
+COPY ["RoyalLibrary.Infra/RoyalLibrary.Infra.csproj", "RoyalLibrary.Infra/"]
+COPY ["RoyalLibrary.Models.Mapping/RoyalLibrary.Models.Mapping.csproj", "RoyalLibrary.Models.Mapping/"]
+COPY ["RoyalLibrary.Repositories/RoyalLibrary.Repositories.csproj", "RoyalLibrary.Repositories/"]
+RUN dotnet restore "RoyalLibrary.API/RoyalLibrary.API.csproj"
+COPY . .
+WORKDIR "/src/RoyalLibrary.API"
+RUN dotnet build "RoyalLibrary.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# Etapa de publicação
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "RoyalLibrary.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# Etapa final
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "RoyalLibrary.API.dll"]
